@@ -1,0 +1,62 @@
+
+#wordBoard {
+    margin: 20% 0 20% 20%;
+    width: 30%;
+    height: 60%;
+    font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    color: white;
+    line-height: 3.5rem;
+}
+
+#loginBoard {
+    background-color: rgb(248, 245, 245);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 10%;
+    margin: 20% 20% 20% 0;
+    width: 25%;
+    height: auto;
+    box-shadow: 3px 3px 15px 5px white;
+}
+
+
+#builtFor {
+    font-size: 350%;
+}
+
+#lab-mice {
+    font-size: 450%;
+}
+
+#talks {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 150%;
+    color: rgb(252, 249, 249);
+    /* font-weight: 3px; */
+}
+
+.submitBtn {
+    width: 40%;
+    margin: 4%;
+    background-color: rgb(78, 186, 236);
+    border-color: rgb(78, 186, 236);
+    border-radius: 10%;
+}
+
+#alertBar {
+    /*  与hide和show相呼应 */
+    display: none; 
+    position: fixed;
+    top: 5%;
+    left: 15%;
+    right: 15%;
+    text-align: center;
+    width: 70%;
+}
+
+#alertMsg {
+    font-size: 250%;
+    color: rgb(51, 68, 67);
+}

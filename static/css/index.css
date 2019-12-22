@@ -1,0 +1,74 @@
+@font-face{
+    font-family: 'Josefin_Sans';
+    src: url('../fonts/Josefin_Sans/JosefinSans-Regular.ttf') format('truetype');
+}
+
+
+@font-face{
+    font-family: flower;
+    src: url("../fonts/Stalemate/Stalemate-Regular.ttf") format('truetype');
+}
+
+body {
+    background: url("../img/bg.jpg")no-repeat center center fixed;
+    background-size: cover;
+}
+@media (min-width: 768px) {
+    .view {
+        overflow: visible;
+        margin-top: -56px;
+    }
+}
+.navbar {
+    z-index: 1;
+    box-shadow: 0px 1px 15px 1px rgb(145, 159, 170);
+}
+.navbar {
+    background-color: transparent;
+}
+.top-nav-collapse {
+    background-color: #4285F4;
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #4285F4;
+    }
+}
+
+html,
+body,
+header,
+.view {
+    font-family: 'Josefin_Sans', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  height: 100%;
+}
+
+#logoImg{
+    width: 20%;
+    height: 20%;
+}
+
+#dropdown-menu-cont {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.carousel-indicators
+li {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+
+#imageContainer {
+    width: 65%;
+}
+
+#carouselContainer {
+    margin-top: 4%;
+    text-align: center;
+}
+
+#logoText {
+    color: white;
+}

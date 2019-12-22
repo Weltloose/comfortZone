@@ -1,0 +1,146 @@
+<html lang="en" class="full-height">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="static/img/icon.gif" type="image/gif" sizes="32x32">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/mobirise-icons.css">
+  <link rel="stylesheet" href="static/css/gallery.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/board.css">
+  <script src="static/js/jquery-3.4.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/lazyload.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/gallery.js"></script>
+  <title>gallery</title>
+</head>
+
+<body>
+
+
+  <!--Main Navigation-->
+  <!-- <header> -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+        <div class="navbar-nav mr-auto" id="logoUl">
+          <img src="static/img/mouse.svg" class="rounded-circle" alt="" id="logoImg">
+        </div>
+        <a class="navbar-brand" href="#"><strong>Comfort Zone</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" onclick="index();">INDEX </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="toogleBoard();">BOARD </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active">GALLERY</a>
+            </li>
+          </ul>
+
+        </div>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item dropdown ">
+            <a class="nav-link p-0 dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <img src="static/img/plus.svg" alt="" width="18%">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink"
+              id="dropdown-menu-cont">
+              <form id="addPublicPhotoesForm" style="display: none;" enctype="multipart/form-data">
+                <input type="file" id="addPublicPhotoesFileInput" multiple onchange="uploadPublicPhotosToBack(this);"
+                  name="publicPhotoes" /></form>
+              <a class="dropdown-item" onclick="uploadPublicPhotoes();">Add Public Photoes</a>
+              <form id="addPrivatePhotoesForm" style="display: none;" enctype="multipart/form-data">
+                <input type="file" id="addPrivatePhotoesFileInput" multiple /></form>
+              <a class="dropdown-item" onclick="uploadPrivatePhotoes();">Add Private Photoes</a>
+              <form id="addPublicVoiceForm" style="display: none;" enctype="multipart/form-data">
+                <input type="file" id="addPublicVoiceFileInput" multiple onchange="uploadPublicVoiceToBack(this);" />
+              </form>
+              <a class="dropdown-item" onclick="uploadPublicVoice();">Add Public Vioce</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document" id="modal-dialog">
+      <div class="modal-content" id="wholeModal">
+        <div id="theyBoth">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">BOARD</h5>
+          </div>
+          <div class="modal-body" id="boardModal">
+          </div>
+        </div>
+        <div class="modal-content" id="wholeModal2">
+          <div class="modal-header">
+            <button type="button" class="modal-title btn  btn-rounded" id="commentText" onclick="sendComment();">COMMENT
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body shadow-textarea" id="boardModal">
+            <textarea class="form-control z-depth-1" name="textareaContents" id="textareaContents"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Model -->
+
+  <!-- </header> -->
+
+  <section class="mbr-gallery " id="gallery3-t" data-rv-view="8977">
+
+    <!-- Lightbox -->
+    <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true"
+      data-interval="false" id="lb-gallery3-t" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog" style="width: 844px; top: 28.737px;">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="carousel-inner" id="galleryModalContent">
+
+            </div>
+            <a class="carousel-control carousel-control-prev" role="button" data-slide="prev"
+              href="#lb-gallery3-t"><span class="mbri-left mbr-iconfont" aria-hidden="true"></span><span
+                class="sr-only">Previous</span></a><a class="carousel-control carousel-control-next" role="button"
+              data-slide="next" href="#lb-gallery3-t"><span class="mbri-right mbr-iconfont"
+                aria-hidden="true"></span><span class="sr-only">Next</span></a><a class="close" href="#" role="button"
+              data-dismiss="modal"><span class="sr-only">Close</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!---->
+  <!-- Page Content -->
+  <div class="container">
+
+    <hr class="mt-2 mb-5">
+
+    <div class="row text-center text-lg-left" id="galleryContent">
+
+
+    </div>
+
+  </div>
+  <!-- /.container-->
+
+</body>

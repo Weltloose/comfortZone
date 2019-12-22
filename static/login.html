@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="static/img/icon.gif" type="image/gif" sizes="32x32">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="static/js/popper.min.js" type="text/javascript"></script>
+    <script src="static/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- <script src="static/js/selfJs.js" type="text/javascript"></script> -->
+    <script>
+        function signIn() {
+            $.ajax({
+                type: "POST",
+                url: "/api/signInCheck",
+                data: JSON.stringify(GetJsonData()),
+                dataType: "text",
+                async: false,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    if (data.substr(0, 7) == "success") {
+                        // $(window).attr("location", "/index");
+                        localStorage.czcookie = data.substr(7);
+                        str = "/index?czcookie=" + localStorage.czcookie;
+                        $(window).attr("location", str)
+                    }
+                    else {
+                        $('#alertBar').show();
+                        $("#alertMsg").html(data);
+                        $("#alertBar").alert();
+                        setTimeout("$('#alertBar').hide();", 1500);
+                    }
+                }
+            });
+        }
+
+        function register() {
+            $.ajax({
+                type: "POST",
+                url: "/api/register",
+                data: JSON.stringify(GetJsonData()),
+                dataType: "text",
+                async: false,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    $('#alertBar').show()
+                    $("#alertMsg").html(data);
+                    $("#alertBar").alert();
+                    setTimeout("$('#alertBar').hide();", 1500);
+                }
+            });
+        }
+
+        function GetJsonData() {
+            var json = {
+                "username": $("#inputUsername").val(),
+                "passwd": $("#inputPassword").val()
+            };
+            return json;
+        }
+
+
+    </script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="static/css/floating-labels.css">
+    <link rel="stylesheet" href="static/css/logoImg.css">
+    <title>comfortZone</title>
+</head>
+
+<body>
+    <div class="alert" id="alertBar">
+        <span id="alertMsg"></span>
+    </div>
+    <div class="container" id="wordBoard">
+        <p>
+            <span id="builtFor">Built for</span> </br> <span id="lab-mice">lab-mice</span></br>
+            <span id="talks">It's been so nice to have you all!</span>
+        </p>
+    </div>
+    <div class="container" id="loginBoard">
+        <form class="form-signin" id="loginForm">
+            <div class="text-center mb-4">
+                <img class="rounded-circle" id="logoImg" src="static/img/logo.png" alt="" width="60%" height="60%">
+            </div>
+
+            <div class="form-label-group">
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required=""
+                    autofocus="" autocomplete="username" name="username">
+                <label for="inputUsername">Username</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required=""
+                    autocomplete="current-password" name="passwd">
+                <label for="inputPassword">Password</label>
+            </div>
+            <!-- 没设置type的话默认为submit,也就是点击会自动发起get请求 -->
+            <button class="btn btn-lg btn-primary submitBtn" type="button" id="signInBtn" onclick="signIn();">Sign
+                in</button>
+            <button class="btn btn-lg btn-primary submitBtn" type="button" id="registerBtn"
+                onclick="register();">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>
