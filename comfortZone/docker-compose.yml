@@ -1,0 +1,38 @@
+version: "3.1"
+
+services: 
+    comfortZone:
+        image: comfortzone
+        restart: always
+        volumes: 
+            - ../static:/go/bin/static
+        environment: 
+            - TZ=Asia/Shanghai
+        ports: 
+            - "80:8080"
+        depends_on: 
+            - redis
+            - mysql
+    
+    redis:
+        image: redis:latest
+        restart: always
+        volumes: 
+            - ../redis-data:/data
+        environment: 
+            - TZ=Asia/Shanghai
+
+    mysql:
+        image: mysql:5.7
+        restart: always
+        volumes: 
+            - ../mysql-data:/var/lib/mysql
+        environment: 
+            MYSQL_DATABASE: comfort_zone
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+
+networks: 
+    default:
+        external: 
+            name: comfortZone
