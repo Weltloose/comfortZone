@@ -46,3 +46,13 @@ func validUser(username, passwd string) bool {
 	}
 	return true
 }
+
+func updateUserPasswd(username, passwd string) bool {
+	var user UserInfo
+	dbOpt := db.Model(&user).Where("username=?", username).Update("passwd", passwd)
+	if dbOpt.Error != nil {
+		fmt.Println("db no update userinfo", dbOpt.Error)
+		return false
+	}
+	return true
+}

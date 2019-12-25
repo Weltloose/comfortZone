@@ -38,6 +38,10 @@ func GetUsernameWithAuth(uuid string) string {
 	return username
 }
 
+func ChangePassword(username, passwd string) bool {
+	return updateUserPasswd(username, passwd)
+}
+
 func getPrivateDockPath(username string) string {
 	return "static/private/" + username
 }

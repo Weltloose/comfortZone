@@ -16,7 +16,7 @@ func GetServer() *negroni.Negroni {
 	mux.HandleFunc("/signIn", controller.SignIn).Methods("GET")
 	mux.HandleFunc("/index", controller.Index).Methods("GET")
 	mux.HandleFunc("/gallery", controller.Gallery).Methods("GET")
-	mux.HandleFunc("/board", controller.Board).Methods("GET")
+	mux.HandleFunc("/password", controller.Password).Methods("GET")
 	mux.HandleFunc("/api/signInCheck", controller.SignInCheck).Methods("POST")
 	mux.HandleFunc("/api/register", controller.Register).Methods("POST")
 	mux.HandleFunc("/api/comment", controller.Comment).Methods("POST")
@@ -24,6 +24,7 @@ func GetServer() *negroni.Negroni {
 	mux.HandleFunc("/api/uploadPublicPhotoes", controller.UploadPublicPhotoes).Methods("POST")
 	mux.HandleFunc("/api/uploadPublicVoice", controller.UploadPublicVoice).Methods("POST")
 	mux.HandleFunc("/api/getPublicPhotoesInfo", controller.GetPublicPhotoesInfo).Methods("GET")
+	mux.HandleFunc("/api/changePassword", controller.ChangePassword).Methods("PATCH")
 
 	// mux.HandleFunc("/register", controller.Register)
 	n := negroni.Classic()

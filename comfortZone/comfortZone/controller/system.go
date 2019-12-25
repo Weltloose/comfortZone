@@ -14,21 +14,10 @@ func CheckSignedin(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "success")
 		return
 	}
-
 	http.Redirect(w, r, "/signIn", http.StatusFound)
 }
 
-func SignIn(w http.ResponseWriter, r *http.Request) {
-	data, err := ioutil.ReadFile("static/login.html")
-	if err != nil {
-		fmt.Println(err)
-	}
-	// fmt.Println(string(data))
-	fmt.Fprintln(w, string(data))
-}
-
 func SignInCheck(w http.ResponseWriter, r *http.Request) {
-
 	req := struct {
 		Username string `json:"username"`
 		Passwd   string `json:"passwd"`
@@ -71,19 +60,19 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "register success, now try sign in!")
 }
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func ChangePassword(w http.ResponseWriter, r *http.Request) {
 	if !checkAuthed(r) {
-		fmt.Println("failed dud")
 		http.Redirect(w, r, "/signIn", http.StatusFound)
 		return
 	}
-	fmt.Println("you got")
-	data, err := ioutil.ReadFile("static/index.html")
-	if err != nil {
-		fmt.Println(err)
+	fmt.Println(r.Form)
+	fmt.Println(r.PostForm)
+	password := r.PostFormValue("passwd")
+	username := model.GetUsernameWithAuth(r.FormValue("czcookie"))
+	ok := model.ChangePassword(username, password)
+	if ok {
+		fmt.Fprintln(w, "password change success!")
 	}
-	// fmt.Println(string(data))
-	fmt.Fprintln(w, string(data))
 }
 
 func checkAuthed(r *http.Request) bool {

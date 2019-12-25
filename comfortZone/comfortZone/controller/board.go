@@ -3,7 +3,6 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"strconv"
 
@@ -11,11 +10,6 @@ import (
 
 	"github.com/Weltloose/comfortZone/lib"
 )
-
-func Board(w http.ResponseWriter, r *http.Request) {
-	data, _ := ioutil.ReadFile("static/board.html")
-	fmt.Fprintf(w, string(data))
-}
 
 func Comment(w http.ResponseWriter, r *http.Request) {
 	if !checkAuthed(r) {
@@ -36,7 +30,6 @@ func Comment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	username := model.GetUsernameWithAuth(r.FormValue("czcookie"))
-	fmt.Println("username ", username)
 	if username != "" {
 		if model.AddComment(username, commentContent.TextareaContents) {
 			fmt.Fprintln(w, "true")

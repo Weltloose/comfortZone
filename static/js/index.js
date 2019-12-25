@@ -1,9 +1,7 @@
 function toogleBoard() {
     var savedComments = []
     var len = 0
-    // console.log(localStorage.savedComments)
     if (localStorage.getItem("savedComments") != null) {
-        // console.log(localStorage.savedComments)
         savedComments = JSON.parse(localStorage.savedComments)
         len = savedComments.length
     }
@@ -112,5 +110,10 @@ function gallery() {
 
 function index() {
     gotoUrl = "/index?czcookie=" + localStorage.czcookie;
+    window.location.href = gotoUrl;
+}
+
+function passwordp() {
+    gotoUrl = "/password?czcookie=" + localStorage.czcookie;
     window.location.href = gotoUrl;
 }
